@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>古风飞雪</title>
+    <link rel="stylesheet" href="styles.css">
+    <link href="https://fonts.googleapis.com/css2?family=Ma+Shan+Zheng&family=Noto+Serif+SC:wght@400;700&display=swap" rel="stylesheet">
+</head>
+<body>
+    <div class="scene">
+        <div class="background"></div>
+        
+        <div class="decoration border-top"></div>
+        <div class="decoration border-bottom"></div>
+        <div class="decoration border-left"></div>
+        <div class="decoration border-right"></div>
+        
+        <div class="poetry">
+            <p>忽如一夜春风来</p>
+            <p>千树万树梨花开</p>
+        </div>
+        
+        <div class="character-container">
+            <img src="https://trae-api-cn.mchost.guru/api/ide/v1/text_to_image?prompt=ancient%20Chinese%20beautiful%20woman%20in%20traditional%20Hanfu%20dress%2C%20elegant%20pose%2C%20long%20black%20hair%2C%20snow%20flakes%20falling%2C%20ink%20painting%20style%2C%20Chinese%20traditional%20art%2C%20soft%20lighting%2C%20ethereal%20atmosphere&image_size=portrait_4_3" 
+                 alt="古风美女" 
+                 class="character">
+        </div>
+        
+        <canvas id="snowCanvas"></canvas>
+    </div>
+
+    <script src="script.js"></script>
+</body>
+</html>

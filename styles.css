@@ -1,0 +1,246 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    overflow: hidden;
+    font-family: 'Noto Serif SC', serif;
+}
+
+.scene {
+    position: relative;
+    width: 100vw;
+    height: 100vh;
+    overflow: hidden;
+}
+
+.background {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: linear-gradient(180deg, 
+        #1a1a2e 0%, 
+        #16213e 30%, 
+        #0f3460 60%, 
+        #1a1a2e 100%);
+    z-index: 0;
+}
+
+.background::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: 
+        radial-gradient(ellipse at 20% 20%, rgba(255,255,255,0.08) 0%, transparent 50%),
+        radial-gradient(ellipse at 80% 80%, rgba(255,255,255,0.05) 0%, transparent 50%),
+        radial-gradient(ellipse at 50% 50%, rgba(135, 206, 235, 0.03) 0%, transparent 70%);
+    animation: bgPulse 8s ease-in-out infinite;
+}
+
+@keyframes bgPulse {
+    0%, 100% { opacity: 1; }
+    50% { opacity: 0.7; }
+}
+
+.decoration {
+    position: absolute;
+    background: transparent;
+    border: 2px solid rgba(255, 215, 0, 0.3);
+    z-index: 1;
+}
+
+.border-top {
+    top: 30px;
+    left: 10%;
+    right: 10%;
+    height: 60px;
+    border-bottom: none;
+    border-radius: 10px 10px 0 0;
+}
+
+.border-bottom {
+    bottom: 30px;
+    left: 10%;
+    right: 10%;
+    height: 60px;
+    border-top: none;
+    border-radius: 0 0 10px 10px;
+}
+
+.border-left {
+    top: 120px;
+    bottom: 120px;
+    left: 30px;
+    width: 60px;
+    border-right: none;
+    border-radius: 10px 0 0 10px;
+}
+
+.border-right {
+    top: 120px;
+    bottom: 120px;
+    right: 30px;
+    width: 60px;
+    border-left: none;
+    border-radius: 0 10px 10px 0;
+}
+
+.border-top::before,
+.border-bottom::before,
+.border-left::before,
+.border-right::before {
+    content: '';
+    position: absolute;
+    background: linear-gradient(90deg, 
+        transparent 0%, 
+        rgba(255, 215, 0, 0.5) 50%, 
+        transparent 100%);
+}
+
+.border-top::before {
+    top: 0;
+    left: 0;
+    right: 0;
+    height: 2px;
+}
+
+.border-bottom::before {
+    bottom: 0;
+    left: 0;
+    right: 0;
+    height: 2px;
+}
+
+.border-left::before {
+    top: 0;
+    left: 0;
+    bottom: 0;
+    width: 2px;
+}
+
+.border-right::before {
+    top: 0;
+    right: 0;
+    bottom: 0;
+    width: 2px;
+}
+
+.poetry {
+    position: absolute;
+    top: 80px;
+    left: 50%;
+    transform: translateX(-50%);
+    text-align: center;
+    z-index: 2;
+    animation: fadeIn 3s ease-out;
+}
+
+.poetry p {
+    font-family: 'Ma Shan Zheng', cursive;
+    font-size: 2.5rem;
+    color: rgba(255, 255, 255, 0.8);
+    text-shadow: 0 0 20px rgba(255, 215, 0, 0.3);
+    margin: 10px 0;
+    letter-spacing: 0.3em;
+}
+
+@keyframes fadeIn {
+    from {
+        opacity: 0;
+        transform: translateX(-50%) translateY(-20px);
+    }
+    to {
+        opacity: 1;
+        transform: translateX(-50%) translateY(0);
+    }
+}
+
+.character-container {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    z-index: 2;
+    animation: characterAppear 4s ease-out;
+}
+
+.character {
+    max-width: 400px;
+    max-height: 70vh;
+    border-radius: 20px;
+    box-shadow: 
+        0 0 60px rgba(255, 255, 255, 0.2),
+        0 0 120px rgba(135, 206, 235, 0.1),
+        0 20px 40px rgba(0, 0, 0, 0.3);
+    opacity: 0.95;
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.character:hover {
+    transform: scale(1.02);
+    box-shadow: 
+        0 0 80px rgba(255, 255, 255, 0.3),
+        0 0 150px rgba(135, 206, 235, 0.2),
+        0 20px 40px rgba(0, 0, 0, 0.3);
+}
+
+@keyframes characterAppear {
+    0% {
+        opacity: 0;
+        transform: translate(-50%, -40%) scale(0.8);
+    }
+    60% {
+        opacity: 0.8;
+        transform: translate(-50%, -52%) scale(1.02);
+    }
+    100% {
+        opacity: 0.95;
+        transform: translate(-50%, -50%) scale(1);
+    }
+}
+
+#snowCanvas {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    z-index: 3;
+    pointer-events: none;
+}
+
+@media (max-width: 768px) {
+    .poetry p {
+        font-size: 1.5rem;
+    }
+    
+    .character {
+        max-width: 280px;
+        max-height: 60vh;
+    }
+    
+    .border-top,
+    .border-bottom {
+        left: 5%;
+        right: 5%;
+        height: 40px;
+    }
+    
+    .border-left,
+    .border-right {
+        top: 100px;
+        bottom: 100px;
+        width: 40px;
+    }
+    
+    .poetry {
+        top: 60px;
+    }
+}
